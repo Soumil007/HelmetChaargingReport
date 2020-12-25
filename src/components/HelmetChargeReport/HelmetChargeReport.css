@@ -1,0 +1,47 @@
+div.helmetReport{
+    min-height: 91vh;
+    position: relative;
+}
+div.singleReport{
+    margin-top: 30px;
+    /* border: 1px solid black; */
+    min-width: 75%;
+    min-height: 125px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 4px rgba(0,0,0, 0.2);
+}
+span.helmetId{
+    border-left: 1px solid black;
+    font-size: 25px;
+    margin-left: 30px;
+}
+span.helmetAttri{
+    display: inline-block;
+    margin-left: 250px;
+}
+span.helmetAttriVal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 25px;
+    color:cornflowerblue;
+    
+    
+}
+span.helmetAttriTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 100;
+    font-size: 27px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}

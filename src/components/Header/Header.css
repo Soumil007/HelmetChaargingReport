@@ -1,0 +1,11 @@
+div.header{
+    background-color: cornflowerblue;
+    min-height: 70px;
+}
+span.ReportHeading{
+    font-size: 30px;
+    color: white;
+    display: flex;
+    padding-top: 13px;
+    margin-left: 18px;
+}
