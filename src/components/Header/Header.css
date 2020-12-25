@@ -1,11 +1,23 @@
 div.header{
     background-color: cornflowerblue;
-    min-height: 70px;
+    min-height: 90px;
+    position: relative;
 }
-span.ReportHeading{
+div span.ReportHeading{
     font-size: 30px;
     color: white;
     display: flex;
-    padding-top: 13px;
+    padding-top: 23px;
     margin-left: 18px;
+}
+span.storeName{
+    position: absolute;
+    color: white;
+    right: 3%;
+    font-size: 25px;
+    display: flex;
+    bottom: 21%;
+    background-color: #5774a9;
+    padding:10px;
+    border-radius: 10px;
 }
