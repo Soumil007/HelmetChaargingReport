@@ -1,6 +1,7 @@
 import React from "react";
 import "./HelmetChargeReport.css";
 import data from "../data.json";
+import helmetlogo from "./HelmetLogo.png"
 
 function HelmetChargeReport(){
     const helmetChargeData = data;
@@ -12,6 +13,7 @@ function HelmetChargeReport(){
             {
                 helmetChargeData.map(helmet=>{
                     return<div className="singleReport"> 
+                        <img className="HelmetLogo" src={helmetlogo} alt="HelmetLogo"></img>
                         <span className="helmetId">{helmet.id}</span>
                         <span className="helmetAttri">
                             <span className="helmetAttriVal">{helmet.LastChargedOn}</span><br />

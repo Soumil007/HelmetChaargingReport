@@ -63,7 +63,7 @@ function App(){
             pdf.addPage().addImage(elem,'PNG',0,0,pdf.internal.pageSize.getWidth(),(pdf.internal.pageSize.getHeight()));
             // pdf.addImage(elem,'PNG',0,0,pdfWidth,(pdfWidth*ratio));
             
-    
+            return 0;
         })
     
         pdf.save("download.pdf");
@@ -137,7 +137,7 @@ function App(){
     //         });
     //     }
 
-    
+
     return<>
         <button className="downloadButton" onClick={convertDomToPDF}>Print</button>
         <div id="divToPrint" className="App" >
