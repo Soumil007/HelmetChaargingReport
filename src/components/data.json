@@ -3,54 +3,55 @@
         "id":"AL0001",
         "LastChargedOn":"2nd Dec 2020, 11:04PM",
         "ChargeDuration":"3hrs 4mins",
-        "LastCharge":"87%"
+        "LastCharge":"87%",
+        "storeId":"BL0001",
+        "isUnderMaintenance":true,
+        "tickets":[{
+            "helmetId":"AL0001",
+            "ticketDate":"12th December, 10:03PM",
+			"ticketID": "CL0001",
+			"ticketText": "Swipe Not Working",
+			"isTicketActive": true,
+			"ticketResolutionDate": "NA",
+			"ticketResolutionText": "NA"
+        }]
     },
     {
-        "id":"AL0001",
+        "id":"AL0002",
         "LastChargedOn":"2nd Dec 2020, 11:04PM",
         "ChargeDuration":"3hrs 4mins",
-        "LastCharge":"87%"
-    },
-    {
-        "id":"AL0001",
-        "LastChargedOn":"2nd Dec 2020, 11:04PM",
-        "ChargeDuration":"3hrs 4mins",
-        "LastCharge":"87%"
-    },
-    {
-        "id":"AL0001",
-        "LastChargedOn":"2nd Dec 2020, 11:04PM",
-        "ChargeDuration":"3hrs 4mins",
-        "LastCharge":"87%"
-    },
-    {
-        "id":"AL0001",
-        "LastChargedOn":"2nd Dec 2020, 11:04PM",
-        "ChargeDuration":"3hrs 4mins",
-        "LastCharge":"87%"
-    },
-    {
-        "id":"AL0001",
-        "LastChargedOn":"2nd Dec 2020, 11:04PM",
-        "ChargeDuration":"3hrs 4mins",
-        "LastCharge":"87%"
-    },
-    {
-        "id":"AL0001",
-        "LastChargedOn":"2nd Dec 2020, 11:04PM",
-        "ChargeDuration":"3hrs 4mins",
-        "LastCharge":"87%"
-    },
-    {
-        "id":"AL0001",
-        "LastChargedOn":"2nd Dec 2020, 11:04PM",
-        "ChargeDuration":"3hrs 4mins",
-        "LastCharge":"87%"
-    },
-    {
-        "id":"AL0001",
-        "LastChargedOn":"2nd Dec 2020, 11:04PM",
-        "ChargeDuration":"3hrs 4mins",
-        "LastCharge":"87%"
+        "LastCharge":"87%",
+        "storeId":"BL0002",
+        "isUnderMaintenance":false,
+        "tickets":[{
+            "helmetId":"AL0002",
+            "ticketDate":"12th December, 9:03PM",
+			"ticketID": "CL0002",
+			"ticketText": "Swipe Not Working",
+			"isTicketActive": true,
+			"ticketResolutionDate": "NA",
+			"ticketResolutionText": "NA"
+        },
+        {
+            "helmetId":"AL0002",
+            "ticketDate":"12th December, 12:03PM",
+			"ticketID": "CL0003",
+			"ticketText": "Mic Volume Too Low",
+			"isTicketActive": false,
+			"ticketResolutionDate": "13th Dec",
+			"ticketResolutionText": "Resolution has been made and new helmet provided"
+
+        },
+        {
+            "helmetId":"AL0002",
+            "ticketDate":"12th December, 7:03PM",
+			"ticketID": "CL0004",
+			"ticketText": "Mic Volume Too Low",
+			"isTicketActive": false,
+			"ticketResolutionDate": "14th Dec",
+			"ticketResolutionText": "Resolution has been made and new helmet provided"
+
+        }]
     }
 ]
+    

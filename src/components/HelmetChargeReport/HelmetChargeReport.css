@@ -53,3 +53,58 @@ img.HelmetLogo{
     width: 50px;
     height: 50px;
 }
+button.openModal{
+    position: fixed;
+    bottom:60px;
+    right:60px;
+}
+button.closeModal{
+    position: absolute;
+    top:40px;
+    right:40px;
+    min-height: 16px;
+    min-width: 16px;
+    border-radius: 100%;
+    background-color: red;
+    outline: none;
+    border: 1px solid red;
+}
+.viewTicketsModalStyles{
+    position: fixed;
+    top: 100px;
+    left: 600px;
+    right: 600px;
+    bottom: 300px;
+    background-color: white;
+    padding: 20px;
+    overflow: auto;
+}
+
+h2.viewTicketHeading{
+    font-size: 30px;
+    margin: 20px 0 20px 20px;
+}
+
+div.singleTicket{
+    min-height: 100px;
+    margin-left: 20px;
+    font-family: sans-serif;
+}
+
+button.raiseTicketModalBtn{
+    position: fixed;
+    bottom:350px;
+    right:650px;
+    background-color: #aaaa80;
+    color: white;
+    outline: none;
+    border: 1px solid #33bb80;
+    min-height: 40px;
+    min-width: 60px;
+    font-size: 22px;
+    border-radius: 20px;
+    outline: none;
+    padding: 10px;
+
+}
+

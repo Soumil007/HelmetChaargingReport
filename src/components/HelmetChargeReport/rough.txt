@@ -1,0 +1,57 @@
+// {
+    //     "id":"AL0003",
+    //     "LastChargedOn":"2nd Dec 2020, 11:04PM",
+    //     "ChargeDuration":"3hrs 4mins",
+    //     "LastCharge":"87%",
+    //     "storeId":"BL0003",
+    //     "isUnderMaintenance":false
+    // },
+    // {
+    //     "id":"AL0004",
+    //     "LastChargedOn":"2nd Dec 2020, 11:04PM",
+    //     "ChargeDuration":"3hrs 4mins",
+    //     "LastCharge":"87%",
+    //     "storeId":"BL0004",
+    //     "isUnderMaintenance":false
+    // },
+    // {
+    //     "id":"AL0005",
+    //     "LastChargedOn":"2nd Dec 2020, 11:04PM",
+    //     "ChargeDuration":"3hrs 4mins",
+    //     "LastCharge":"87%",
+    //     "storeId":"BL0005",
+    //     "isUnderMaintenance":true
+    // },
+    // {
+    //     "id":"AL0006",
+    //     "LastChargedOn":"2nd Dec 2020, 11:04PM",
+    //     "ChargeDuration":"3hrs 4mins",
+    //     "LastCharge":"87%",
+    //     "storeId":"BL0006",
+    //     "isUnderMaintenance":false
+    // },
+    // {
+    //     "id":"AL0007",
+    //     "LastChargedOn":"2nd Dec 2020, 11:04PM",
+    //     "ChargeDuration":"3hrs 4mins",
+    //     "LastCharge":"87%",
+    //     "storeId":"BL0007",
+    //     "isUnderMaintenance":true
+    // },
+    // {
+    //     "id":"AL0008",
+    //     "LastChargedOn":"2nd Dec 2020, 11:04PM",
+    //     "ChargeDuration":"3hrs 4mins",
+    //     "LastCharge":"87%",
+    //     "storeId":"BL0008",
+    //     "isUnderMaintenance":false
+    // },
+    // {
+    //     "id":"AL0009",
+    //     "LastChargedOn":"2nd Dec 2020, 11:04PM",
+    //     "ChargeDuration":"3hrs 4mins",
+    //     "LastCharge":"87%",
+    //     "storeId":"BL0009",
+    //     "isUnderMaintenance":true
+    // }
+// ]
