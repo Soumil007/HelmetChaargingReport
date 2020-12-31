@@ -137,8 +137,17 @@ function HelmetChargeReport(){
                 onRequestClose={()=>SetRTModalIsOpen(false)}
                 className="viewTicketsModalStyles"
             >
-                <h2>Raise Ticket</h2>
-                <button onClick={()=>SetRTModalIsOpen(false)}>Close</button>
+                <h2 className="viewTicketHeading">Raise Ticket</h2>
+                <hr className="headingRuleBar" style={{marginBottom:"30px"}}></hr>
+
+                <div className="helmetSelection">
+                    <h3 style={{fontSize:"24px"}}>Select Helmet</h3>
+                    <select name="helmet" id="helmet" className="helmetSelectOption">
+                        {helmetChargeData.map(helmet=><option>{helmet.id}</option>)}
+                    </select>
+                </div>
+
+                <button onClick={()=>SetRTModalIsOpen(false)} className="closeModal"></button>
 
             </Modal>
 
