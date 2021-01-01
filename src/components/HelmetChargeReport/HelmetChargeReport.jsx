@@ -92,6 +92,13 @@ function HelmetChargeReport(){
                 isOpen={modalIsOpen}
                 onRequestClose={()=>setModalIsOpen(false)}
                 className="viewTicketsModalStyles"
+                style={{
+                    content:{
+                        boxShadow:"3px 3px 8px 4px rgba(0,0,0,0.4)",
+                        borderRadius:"20px",
+                        outline:"none"
+                    }
+                }}
             >
                 
                 <h2 className="viewTicketHeading">View Tickets</h2>
@@ -136,15 +143,28 @@ function HelmetChargeReport(){
                 isOpen={RTModalIsOpen}
                 onRequestClose={()=>SetRTModalIsOpen(false)}
                 className="viewTicketsModalStyles"
+                style={{
+                    content:{
+                        boxShadow:"3px 3px 8px 4px rgba(0,0,0,0.4)",
+                        borderRadius:"20px",
+                        outline:"none"
+                    }
+                }}
             >
-                <h2 className="viewTicketHeading">Raise Ticket</h2>
-                <hr className="headingRuleBar" style={{marginBottom:"30px"}}></hr>
+                <h2 className="viewTicketHeading" style={{color:"#666666"}}>Create New Ticket</h2>
+                <hr className="headingRuleBar" style={{marginBottom:"30px", border:"2px solid gray"}}></hr>
 
                 <div className="helmetSelection">
-                    <h3 style={{fontSize:"24px"}}>Select Helmet</h3>
+                    <h3 style={{fontSize:"24px",color:"#ff6666"}}>Select Helmet</h3>
                     <select name="helmet" id="helmet" className="helmetSelectOption">
                         {helmetChargeData.map(helmet=><option>{helmet.id}</option>)}
                     </select>
+                </div>
+
+                <div className="ticketDrescription">
+                    <h3 style={{fontSize:"24px",color:"#ff6666"}}>Describe the problem in few words:</h3>
+                    <textarea rows="8" style={{borderRadius:"20px", backgroundColor:"lightgrey",minWidth:"72%", border:"2px solid gray"}}></textarea>
+                    <button className="createBtn">Create</button>
                 </div>
 
                 <button onClick={()=>SetRTModalIsOpen(false)} className="closeModal"></button>
