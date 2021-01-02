@@ -73,16 +73,22 @@ function HelmetChargeReport(){
     
     
     function makeNewTicket(helmetID,ticketDesc){
-        let newTicket = {
-            "helmetId":helmetID,
-            "ticketDate":getTicketDate(),
-            "ticketID":"CLOO100",
-            "ticketText":ticketDesc,
-            "isTicketActive":true,
-            "ticketResolutionDate": "NA",
-			"ticketResolutionText": "NA"
+        if(helmetID===null){
+            alert("helmet id not selected");
+            return false
+        }else{
+            let newTicket = {
+                "helmetId":helmetID,
+                "ticketDate":getTicketDate(),
+                "ticketID":"CLOO100",
+                "ticketText":ticketDesc,
+                "isTicketActive":true,
+                "ticketResolutionDate": "NA",
+                "ticketResolutionText": "NA"
+            }
+            return newTicket;
         }
-        return newTicket;
+        
     }
     
     //Function to set new ticketDescription
@@ -101,7 +107,11 @@ function HelmetChargeReport(){
     function handleSubmit(event){
         event.preventDefault();
         let newTicket = makeNewTicket(helmetId,ticketDesc);
-        tickets.push(newTicket);
+        console.log(newTicket);
+        if(newTicket!==false){
+            tickets.push(newTicket);
+        }
+        
     }
 
     function handleRaiseTicket(){
@@ -203,15 +213,16 @@ function HelmetChargeReport(){
                 <h2 className="viewTicketHeading" style={{color:"#666666"}}>Create New Ticket</h2>
                 <hr className="headingRuleBar" style={{marginBottom:"30px", border:"2px solid gray"}}></hr>
 
-                <form id="newTicket" method="POST" onSubmit={handleSubmit}>
+                <form id="newTicket" method="POST" onSubmit={handleSubmit} name="createTicketForm">
                     <div className="helmetSelection">
                         <h3 style={{fontSize:"24px",color:"#ff6666"}}>Select Helmet</h3>
-                        <select name="helmet" 
+                        <select name="helmetid" 
                             id="helmetIDSelected" 
                             className="helmetSelectOption" 
                             value={helmetId}
                             onChange={handleHelmetIdSelection}
                         >
+                            <option selected disabled>Select HelmetID</option>
                             {helmetChargeData.map(helmet=><option value={helmet.id}>{helmet.id}</option>)}
                         </select>
                     </div>
