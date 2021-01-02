@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./HelmetChargeReport.css";
 import data from "../data.json";
 import helmetlogo from "./HelmetLogo.png"
-import Popup from 'reactjs-popup';
-import ViewTickets from "../ViewTickets/ViewTickets";
 import Modal from "react-modal";
 import SettingsLogo from "../images/settingsLogo.png";
 
@@ -15,6 +13,8 @@ function HelmetChargeReport(){
     const [tickets,setTickets] = useState([]);
     const [modalIsOpen,setModalIsOpen] = useState(false);
     const [RTModalIsOpen,SetRTModalIsOpen] = useState(false);
+    const [ticketDesc,setTicketDesc] = useState("");
+    const [helmetId,setHelmetId] = useState(null);
 
     const makeTicketsArray = () =>{
 
@@ -45,23 +45,71 @@ function HelmetChargeReport(){
     
 
     useEffect(()=>{
-        // tickets=[];
-
-        const vari = makeTicketsArray();
-        
-        console.log("useEffect firing");
-        
+        const vari = makeTicketsArray();        
 
     },[helmetChargeData])
 
     
 
-    console.log(tickets);    
+    console.log(tickets);  
+    let newDate = new Date();
+    console.log(newDate);
+    let hour = newDate.getHours()>12?newDate.getHours()==="00"?0:newDate.getHours()-12:newDate.getHours();
+    
+   
+    
+    console.log(hour);
+    function getTicketDate(){
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+        ];
+        let newDate = new Date();
+        let hour = newDate.getHours()>12?newDate.getHours()==="00"?0:newDate.getHours()-12:newDate.getHours();
+        let AMPM = newDate.getHours()>=12?"PM":"AM"
+        
+        let ticketDate = newDate.getDate()+" "+monthNames[newDate.getMonth()]+", "+hour+":"+newDate.getMinutes()+AMPM;
+        return ticketDate;
+    }
+    
+    
+    function makeNewTicket(helmetID,ticketDesc){
+        let newTicket = {
+            "helmetId":helmetID,
+            "ticketDate":getTicketDate(),
+            "ticketID":"CLOO100",
+            "ticketText":ticketDesc,
+            "isTicketActive":true,
+            "ticketResolutionDate": "NA",
+			"ticketResolutionText": "NA"
+        }
+        return newTicket;
+    }
+    
+    //Function to set new ticketDescription
+    function handleTicketDescChange(event){
+        setTicketDesc(event.target.value);
+    }
+
+    //Function to set new ticketDescription corresponding helmetId
+
+    function handleHelmetIdSelection(event){
+        setHelmetId(event.target.value);
+    }
+
+    console.log(helmetId+"=>"+ticketDesc);
+
+    function handleSubmit(event){
+        event.preventDefault();
+        let newTicket = makeNewTicket(helmetId,ticketDesc);
+        tickets.push(newTicket);
+    }
 
     function handleRaiseTicket(){
         setModalIsOpen(false);
         SetRTModalIsOpen(true);
     }
+
+    
 
     return<>
         <div className="helmetReport">
@@ -155,18 +203,32 @@ function HelmetChargeReport(){
                 <h2 className="viewTicketHeading" style={{color:"#666666"}}>Create New Ticket</h2>
                 <hr className="headingRuleBar" style={{marginBottom:"30px", border:"2px solid gray"}}></hr>
 
-                <div className="helmetSelection">
-                    <h3 style={{fontSize:"24px",color:"#ff6666"}}>Select Helmet</h3>
-                    <select name="helmet" id="helmet" className="helmetSelectOption">
-                        {helmetChargeData.map(helmet=><option>{helmet.id}</option>)}
-                    </select>
-                </div>
+                <form id="newTicket" method="POST" onSubmit={handleSubmit}>
+                    <div className="helmetSelection">
+                        <h3 style={{fontSize:"24px",color:"#ff6666"}}>Select Helmet</h3>
+                        <select name="helmet" 
+                            id="helmetIDSelected" 
+                            className="helmetSelectOption" 
+                            value={helmetId}
+                            onChange={handleHelmetIdSelection}
+                        >
+                            {helmetChargeData.map(helmet=><option value={helmet.id}>{helmet.id}</option>)}
+                        </select>
+                    </div>
 
-                <div className="ticketDrescription">
-                    <h3 style={{fontSize:"24px",color:"#ff6666"}}>Describe the problem in few words:</h3>
-                    <textarea rows="8" style={{borderRadius:"20px", backgroundColor:"lightgrey",minWidth:"72%", border:"2px solid gray"}}></textarea>
-                    <button className="createBtn">Create</button>
-                </div>
+                    <div className="ticketDrescription">
+                        <h3 style={{fontSize:"24px",color:"#ff6666"}}>Describe the problem in few words:</h3>
+                        <textarea 
+                            id="descBox"
+                            rows="8" 
+                            style={{borderRadius:"20px", backgroundColor:"lightgrey",minWidth:"72%", border:"2px solid gray"}}
+                            value={ticketDesc}
+                            onChange={handleTicketDescChange}>
+                        </textarea>
+                        <button className="createBtn" type="submit">Create</button>
+                        {/* <input className="createBtn" type="submit" value="Submit" /> */}
+                    </div>
+                </form>
 
                 <button onClick={()=>SetRTModalIsOpen(false)} className="closeModal"></button>
 
