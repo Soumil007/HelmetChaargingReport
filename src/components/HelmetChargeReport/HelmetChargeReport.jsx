@@ -5,6 +5,7 @@ import helmetlogo from "./HelmetLogo.png"
 import Popup from 'reactjs-popup';
 import ViewTickets from "../ViewTickets/ViewTickets";
 import Modal from "react-modal";
+import SettingsLogo from "../images/settingsLogo.png";
 
 Modal.setAppElement('#root')
 
@@ -86,7 +87,7 @@ function HelmetChargeReport(){
             }
 
             {/* Modal for ViewTickets */}
-            <button onClick={()=>setModalIsOpen(true)} className="openModal">Open</button>
+            <button onClick={()=>setModalIsOpen(true)} className="openModal"><img className="SettingsLogo" src={SettingsLogo} alt="SettingsLogo" style={{width:"100px", height:"100px",borderRadius:"100%",outline:"none",boxShadow:"2px 2px 6px 4px rgba(0,0,0,0.4)",padding:"5px"}}></img></button>
 
             <Modal 
                 isOpen={modalIsOpen}
@@ -120,7 +121,7 @@ function HelmetChargeReport(){
                                 borderRadius:"15px",
                                 padding:"8px",
                                 color:"white",
-                                fontWeight:"200"}}>
+                                fontWeight:"400"}}>
                                     {ticket.ticketResolutionDate!=="NA"?"Resolved, "+ticket.ticketResolutionDate:"Resolving"}
                                 </div>
                                 <div style={{color:"#33bb80",marginTop:"10px"}}>        

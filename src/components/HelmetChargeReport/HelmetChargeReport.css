@@ -57,6 +57,17 @@ button.openModal{
     position: fixed;
     bottom:60px;
     right:60px;
+    background: none;
+    outline: none;
+    border: 1px solid white;
+    border-radius: 100%;
+    cursor: pointer;
+}
+button.openModal:hover{
+    background-color: rgba(148, 141, 141, 0.2);
+}
+button.openModal:active{
+    transform: translateY(4px);
 }
 button.closeModal{
     position: absolute;
@@ -68,21 +79,28 @@ button.closeModal{
     background-color: red;
     outline: none;
     border: 1px solid red;
+    cursor: pointer;
 }
+button.closeModal:hover{
+    background-color: rgb(221, 1, 1);
+}
+button.closeModal:active{
+    transform: translateY(2px);
+}
+
+
 .viewTicketsModalStyles{
     position: fixed;
     top: 100px;
     left: 600px;
     right: 600px;
-    bottom: 250px;
+    bottom: 350px;
     background-color: white;
     padding: 20px;
     overflow: auto;
-    min-height: 500px;
-    /* width */
-    
-    
+    min-height: 560px;
 }
+/* width */
 .viewTicketsModalStyles::-webkit-scrollbar {
     width: 10px;
   }
@@ -97,8 +115,6 @@ button.closeModal{
   .viewTicketsModalStyles::-webkit-scrollbar-thumb {
     background: #aaaa80; 
     border-radius: 10px;
-    border-top-right-radius:20px;
-    border-bottom-right-radius:20px ;
   }
   
   /* Handle on hover */
@@ -126,14 +142,24 @@ button.raiseTicketModalBtn{
     color: white;
     outline: none;
     border: 1px solid #33bb80;
-    min-height: 40px;
-    min-width: 60px;
+    min-height: 50px;
+    min-width: 150px;
     font-size: 22px;
-    border-radius: 20px;
+    font-weight: 600;
+    border-radius: 15px;
     outline: none;
     padding: 10px;
-
+    box-shadow: 2px 2px 6px 4px rgba(79, 175, 87, 0.4);
+    cursor: pointer;
 }
+
+button.raiseTicketModalBtn:hover{
+    background-color: #8f8f6c;
+}
+button.raiseTicketModalBtn:active{
+    transform: translateY(4px);
+}
+
 
 div.helmetSelection{
     
@@ -152,6 +178,10 @@ select.helmetSelectOption{
     font-size: 20px;
     outline: none;
     border: 1px solid white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right;
+    background-position-x: 97%;
 }
 
 div.ticketDrescription{
@@ -177,5 +207,12 @@ button.createBtn{
     color: white;
     border: 1px solid red;
     box-shadow: 2px 2px 2px 2px rgba(0,0,0, 0.2);
-    
+    cursor: pointer;
+}
+button.createBtn:hover{
+    background-color: #ff3232;
+}
+button.createBtn:active{
+    transform: translateY(4px);
+
 }
