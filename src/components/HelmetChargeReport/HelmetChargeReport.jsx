@@ -215,7 +215,7 @@ function HelmetChargeReport(){
 
                 <form id="newTicket" method="POST" onSubmit={handleSubmit} name="createTicketForm">
                     <div className="helmetSelection">
-                        <h3 style={{fontSize:"24px",color:"#ff6666"}}>Select Helmet</h3>
+                        <h3 style={{fontSize:"24px",color:"#ff6666",marginTop:"1%"}}>Select Helmet</h3>
                         <select name="helmetid" 
                             id="helmetIDSelected" 
                             className="helmetSelectOption" 
@@ -228,12 +228,13 @@ function HelmetChargeReport(){
                     </div>
 
                     <div className="ticketDrescription">
-                        <h3 style={{fontSize:"24px",color:"#ff6666"}}>Describe the problem in few words:</h3>
+                        <h3 style={{fontSize:"24px",color:"#ff6666",marginTop:"1%"}}>Describe the problem in few words:</h3>
                         <textarea 
                             id="descBox"
-                            rows="8" 
-                            style={{borderRadius:"20px", backgroundColor:"lightgrey",minWidth:"72%", border:"2px solid gray"}}
+                            rows="8"
                             value={ticketDesc}
+                            className="ticketDescBox"
+                            maxLength="72"
                             onChange={handleTicketDescChange}>
                         </textarea>
                         <button className="createBtn" type="submit" >Create</button>

@@ -190,6 +190,20 @@ div.ticketDrescription{
     padding: 1% 0 5% 18%;
 }
 
+textarea.ticketDescBox{
+    border-radius:20px ;
+    background-color:rgb(240, 222, 222);
+    min-width:72%;
+    max-height: 120px;
+    border:2px solid gray;
+    outline:none;
+    padding:10px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #574949;
+}
+
 button.createBtn{
     display: flex;
     margin-top: 2%;
