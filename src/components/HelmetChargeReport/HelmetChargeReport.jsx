@@ -4,7 +4,7 @@ import data from "../data.json";
 import helmetlogo from "./HelmetLogo.png"
 import Modal from "react-modal";
 import SettingsLogo from "../images/settingsLogo.png";
-
+import tickLogo from "../images/tick.png";
 Modal.setAppElement('#root')
 
 function HelmetChargeReport(){
@@ -13,6 +13,7 @@ function HelmetChargeReport(){
     const [tickets,setTickets] = useState([]);
     const [modalIsOpen,setModalIsOpen] = useState(false);
     const [RTModalIsOpen,SetRTModalIsOpen] = useState(false);
+    const [ticketCreatedModalIsOpen,setTicketCreatedModalIsOpen] = useState(false);
     const [ticketDesc,setTicketDesc] = useState("");
     const [helmetId,setHelmetId] = useState(null);
 
@@ -51,14 +52,8 @@ function HelmetChargeReport(){
 
     
 
-    console.log(tickets);  
-    let newDate = new Date();
-    console.log(newDate);
-    let hour = newDate.getHours()>12?newDate.getHours()==="00"?0:newDate.getHours()-12:newDate.getHours();
-    
-   
-    
-    console.log(hour);
+    // console.log(tickets);  
+
     function getTicketDate(){
         const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -102,22 +97,27 @@ function HelmetChargeReport(){
         setHelmetId(event.target.value);
     }
 
-    console.log(helmetId+"=>"+ticketDesc);
-
     function handleSubmit(event){
         event.preventDefault();
         let newTicket = makeNewTicket(helmetId,ticketDesc);
         console.log(newTicket);
         if(newTicket!==false){
             tickets.push(newTicket);
-        }
-        
+            setTicketCreatedModalIsOpen(true);
+            SetRTModalIsOpen(false);
+        }   
     }
 
     function handleRaiseTicket(){
         setModalIsOpen(false);
         SetRTModalIsOpen(true);
     }
+
+    // function handleCreateTicket(){
+    //     setTicketCreatedModalIsOpen(true);
+    //     SetRTModalIsOpen(false)
+
+    // }
 
     
 
@@ -236,12 +236,32 @@ function HelmetChargeReport(){
                             value={ticketDesc}
                             onChange={handleTicketDescChange}>
                         </textarea>
-                        <button className="createBtn" type="submit">Create</button>
+                        <button className="createBtn" type="submit" >Create</button>
                         {/* <input className="createBtn" type="submit" value="Submit" /> */}
                     </div>
                 </form>
 
                 <button onClick={()=>SetRTModalIsOpen(false)} className="closeModal"></button>
+
+            </Modal>
+            <Modal
+                isOpen={ticketCreatedModalIsOpen}
+                onRequestClose={()=>setTicketCreatedModalIsOpen(false)}
+                className="ticketCreatedModalStyles"
+                style={{
+                    content:{
+                        boxShadow:"3px 3px 8px 4px rgba(0,0,0,0.4)",
+                        borderRadius:"20px",
+                        outline:"none",
+                        height:"300px"
+                    }
+                }}
+            >
+                <div className="ticketCreated">
+                    <img src={tickLogo} alt="tick" className="ticketCreatedImg"></img>
+                    <h2 className="ticketCreatedHeading">Ticket Created</h2>
+                    <h3 className="ticketCreatedMsg">We'll be in touch.</h3>
+                </div>
 
             </Modal>
 
