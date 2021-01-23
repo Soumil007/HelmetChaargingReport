@@ -171,7 +171,7 @@ function HelmetChargeReport(props){
                             <span className="helmetAttriTitle">Charge Duration</span>
                         </span>
                         <span className="helmetAttri">
-                            <span className="helmetAttriVal">{helmet.device_id}</span><br />
+                            <span className="helmetAttriVal">{helmet.chargeLogs.length!==0?helmet.chargeLogs[0].end_battery!==null?helmet.chargeLogs[0].start_battery+","+helmet.chargeLogs[0].end_battery:"null":"null"}</span><br />
                             <span className="helmetAttriTitle">Last Charge</span>
                         </span>
                         <button onClick={()=>handleChargeList(helmet.chargeLogs)} className="moreOption">...</button>
@@ -206,7 +206,7 @@ function HelmetChargeReport(props){
                                         <span className="logTitle">Charge Duration</span>
                                     </span>
                                     <span className="helmetAttriChargeList">
-                                        <span className="logVal">{}</span><br />
+                                        <span className="logVal">{log.end_battery!==null?log.start_battery+","+log.end_battery:"null"}</span><br />
                                         <span className="logTitle">Last Charge</span>
                                     </span> 
                                 </div>
