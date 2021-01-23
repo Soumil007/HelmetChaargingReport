@@ -1,0 +1,8 @@
+a.active_class{
+    color: red;
+}
+a{
+    color: aquamarine;
+    margin-left: 20px;
+    font-size: 32px;
+}

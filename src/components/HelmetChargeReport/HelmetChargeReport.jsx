@@ -7,16 +7,31 @@ import SettingsLogo from "../images/settingsLogo.png";
 import tickLogo from "../images/tick.png";
 Modal.setAppElement('#root')
 
-function HelmetChargeReport(){
+function HelmetChargeReport(props){
+    console.log(props.HelmetReport);
+
+    // console.log("reportArray");
+    // console.log(props.HelmetReport);
     
     const helmetChargeData = data;
+    // console.log(helmetChargeData);
+
+    //fetched data
+    const helmetData = props.HelmetReport;
+
+    helmetData.map((rider)=>console.log(rider))
+    // console.log("props");
+    // console.log(helmetData);
+
+
     const [tickets,setTickets] = useState([]);
     const [modalIsOpen,setModalIsOpen] = useState(false);
     const [RTModalIsOpen,SetRTModalIsOpen] = useState(false);
+    const [lastChargeModal,setLastChargeModal] = useState(false);
     const [ticketCreatedModalIsOpen,setTicketCreatedModalIsOpen] = useState(false);
     const [ticketDesc,setTicketDesc] = useState("");
     const [helmetId,setHelmetId] = useState(null);
-
+    
     const makeTicketsArray = () =>{
 
         
@@ -52,7 +67,7 @@ function HelmetChargeReport(){
 
     
 
-    // console.log(tickets);  
+    console.log(tickets);  
 
     function getTicketDate(){
         const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -86,12 +101,12 @@ function HelmetChargeReport(){
         
     }
     
-    //Function to set new ticketDescription
+    // Function to set new ticketDescription
     function handleTicketDescChange(event){
         setTicketDesc(event.target.value);
     }
 
-    //Function to set new ticketDescription corresponding helmetId
+    // Function to set new ticketDescription corresponding helmetId
 
     function handleHelmetIdSelection(event){
         setHelmetId(event.target.value);
@@ -119,33 +134,95 @@ function HelmetChargeReport(){
 
     // }
 
-    
+    function getChargeDuration(milsecs){
+        let secs = milsecs/1000;
+        let mins = Math.round(secs/60);
+        let hrs = Math.floor(mins/60);
+        mins = mins%60;
+        return (hrs+"hr "+mins+"min");
+    }
 
+    const [chargelogs,setLastChargeLogs]=useState([]);
+        console.log("chargeLogs");
+        console.log(chargelogs);
+    
+    
+    function handleChargeList(chargeLogs){
+        setLastChargeModal(true);
+        // setLastChargeLogs(prev=>[...prev,chargeLogs])
+        setLastChargeLogs(chargeLogs);
+    }
+    
     return<>
         <div className="helmetReport">
             {
-                helmetChargeData.map(helmet=>{
-                    return<div className="singleReport" key={helmet.id}> 
+                helmetData.map(helmet=>{
+                    return<div className="singleReport" key={helmet.device_id}> 
+                        <span className="HelmetAttriLogo">
                         <img className="HelmetLogo" src={helmetlogo} alt="HelmetLogo"></img>
                         <span className="helmetId">{helmet.id}</span>
+                        </span>
                         <span className="helmetAttri">
-                            <span className="helmetAttriVal">{helmet.LastChargedOn}</span><br />
+                            <span className="helmetAttriVal">{helmet.chargeLogs.length!==0?helmet.chargeLogs[0].start:"null"}</span><br />
                             <span className="helmetAttriTitle">Last Charged On</span>
                         </span>
                         <span className="helmetAttri">
-                            <span className="helmetAttriVal">{helmet.ChargeDuration}</span><br />
+                            <span className="helmetAttriVal">{helmet.chargeLogs.length!==0?helmet.chargeLogs[0].end!==null?getChargeDuration(new Date(helmet.chargeLogs[0].end)-new Date(helmet.chargeLogs[0].start)):"Charging":"null"}</span><br />
                             <span className="helmetAttriTitle">Charge Duration</span>
                         </span>
                         <span className="helmetAttri">
-                            <span className="helmetAttriVal">{helmet.LastCharge}</span><br />
+                            <span className="helmetAttriVal">{helmet.device_id}</span><br />
                             <span className="helmetAttriTitle">Last Charge</span>
                         </span>
+                        <button onClick={()=>handleChargeList(helmet.chargeLogs)} className="moreOption">...</button>
                     </div>
                 })
             }
+            {/* Modal for Last 5 Charges */}
+            <Modal 
+                isOpen={lastChargeModal}
+                onRequestClose={()=>setLastChargeModal(false)}
+                className="viewLastChargeModalStyles"
+                style={{
+                    content:{
+                        boxShadow:"3px 3px 8px 4px rgba(0,0,0,0.4)",
+                        borderRadius:"20px",
+                        outline:"none"
+                    }
+                }}
+            >
+                <h2 className="LastChargeModalHeading">Last Charge List</h2>
+                <div>
+                    {  
+                        chargelogs.map((log,index)=>{
+                            while(index<5){
+                                return <div className="singleReportChargeList">
+                                    <span className="helmetAttriChargeList">
+                                        <span className="logVal">{log.start}</span><br />
+                                        <span className="logTitle">Last Charged On</span>
+                                    </span>
+                                    <span className="helmetAttriChargeList">
+                                        <span className="logVal">{log.end!==null?getChargeDuration(new Date(log.end)-new Date(log.start)):"Charging"}</span><br />
+                                        <span className="logTitle">Charge Duration</span>
+                                    </span>
+                                    <span className="helmetAttriChargeList">
+                                        <span className="logVal">{}</span><br />
+                                        <span className="logTitle">Last Charge</span>
+                                    </span> 
+                                </div>
+                            }
+                        }
+                        
+                    )}
+                    
+                </div>
+
+
+                <button onClick={()=>setLastChargeModal(false)} className="closeModal"></button>
+            </Modal>
 
             {/* Modal for ViewTickets */}
-            <button onClick={()=>setModalIsOpen(true)} className="openModal"><img className="SettingsLogo" src={SettingsLogo} alt="SettingsLogo" style={{width:"100px", height:"100px",borderRadius:"100%",outline:"none",boxShadow:"2px 2px 6px 4px rgba(0,0,0,0.4)",padding:"5px"}}></img></button>
+            <button onClick={()=>setModalIsOpen(true)} className="openModal"><img className="SettingsLogo" src={SettingsLogo} alt="SettingsLogo" style={{width:"100px", height:"100px",borderRadius:"100%",outline:"none",boxShadow:"2px 2px 6px 4px rgba(0,0,0,0.4)",padding:"5px"}}></img></button> */}
 
             <Modal 
                 isOpen={modalIsOpen}
@@ -238,13 +315,13 @@ function HelmetChargeReport(){
                             onChange={handleTicketDescChange}>
                         </textarea>
                         <button className="createBtn" type="submit" >Create</button>
-                        {/* <input className="createBtn" type="submit" value="Submit" /> */}
                     </div>
                 </form>
 
                 <button onClick={()=>SetRTModalIsOpen(false)} className="closeModal"></button>
 
             </Modal>
+            
             <Modal
                 isOpen={ticketCreatedModalIsOpen}
                 onRequestClose={()=>setTicketCreatedModalIsOpen(false)}
